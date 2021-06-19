@@ -35,9 +35,9 @@ const Todo = ()=>{
             <ul>{tasks.map((t)=>
                 <li key={t.id}>
                 
-                <span className={t.completed?'red':'blue'}>{t.name}</span>
                 <input type="checkbox" onClick={()=>handleChangeCompleted(t)}/>
-                <button onClick={()=>{handleDeleteTask(t)}} > X </button>
+                <span className={t.completed?'red':'blue'}>{t.name}</span>
+                <button onClick={()=>{handleDeleteTask(t)}} ><i class="fas fa-trash-alt"></i> </button>
                 </li>
             )}</ul>
         </div>

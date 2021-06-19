@@ -14,3 +14,7 @@ ul {
   color: red;
   text-decoration: line-through;
 }
+
+span {
+  margin: 10px;
+}
