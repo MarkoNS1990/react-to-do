@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-
+import TodoItem from './TodoItem'
 
 const Todo = ()=>{
     const [task,setTask] = useState('')
@@ -11,20 +11,9 @@ const Todo = ()=>{
     console.log(task);
         
     }
-    const handleChangeCompleted = (t)=>{
-        
-        setTasks(tasks.map((item)=>{
-            if(item.id === t.id){
+    
 
-                return {...item,completed:!item.completed}
-            }
-            return item
-        }))
-    }
-
-    const handleDeleteTask = (t)=>{
-        setTasks(tasks.filter(item=>item.id!==t.id))
-    }
+    
 
     
 
@@ -33,12 +22,8 @@ const Todo = ()=>{
             <input type="text" placeholder='Add todo' onChange={(e)=>setTask(e.target.value)} value={task}/>
             <button onClick = {handleAddTaskClick}>Add task</button>
             <ul>{tasks.map((t)=>
-                <li key={t.id}>
+                <TodoItem setTasks={setTasks} t={t} tasks={tasks} />
                 
-                <input type="checkbox" onClick={()=>handleChangeCompleted(t)}/>
-                <span className={t.completed?'red':'blue'}>{t.name}</span>
-                <button onClick={()=>{handleDeleteTask(t)}} ><i class="fas fa-trash-alt"></i> </button>
-                </li>
             )}</ul>
         </div>
         
