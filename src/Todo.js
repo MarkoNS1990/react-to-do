@@ -9,8 +9,11 @@ const Todo = ()=>{
     
     const handleSubmitForm = (e)=>{
         e.preventDefault()
-        setTasks([...tasks,{name:task,completed:false,id:Math.random()*1000}])
-        setTask('')
+        
+        task!=='' &&  setTasks([...tasks,{name:task,completed:false,id:Math.random()*1000}])
+            setTask('')
+        
+        
     }
     
 
