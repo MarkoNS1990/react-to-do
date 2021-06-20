@@ -1,38 +1,27 @@
 import React,{useState} from 'react'
-import TodoItem from './TodoItem'
-
+import TodoList from './TodoList'
+import TodoForm from './TodoForm'
 const Todo = ()=>{
     const [task,setTask] = useState('')
     const [tasks,setTasks]= useState([])
-    const handleAddTaskClick = ()=>{
-        
+    
+    
+    
+    const handleSubmitForm = (e)=>{
+        e.preventDefault()
         setTasks([...tasks,{name:task,completed:false,id:Math.random()*1000}])
         setTask('')
-    console.log(task);
-        
     }
-    
-
     
 
     
 
     return(
         <div className="main-div">
-            <input type="text" placeholder='Add todo' onChange={(e)=>setTask(e.target.value)} value={task}/>
-            <button onClick = {handleAddTaskClick}>Add task</button>
-            <ul>{tasks.map((t)=>
-                <TodoItem setTasks={setTasks} t={t} tasks={tasks} />
-                
-            )}</ul>
+            <TodoForm onSubmitForm = {handleSubmitForm} task={task} setTask={setTask}/>
+            <TodoList setTasks={setTasks} tasks={tasks} />
         </div>
-        
-        
-        
         )
-    
-            
-        
     
 }
 
