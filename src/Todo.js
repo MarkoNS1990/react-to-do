@@ -3,11 +3,11 @@ import TodoList from './TodoList'
 import TodoForm from './TodoForm'
 const Todo = () => {
     const [task, setTask] = useState('')
-    const [tasks, setTasks] = useState([])
+    const [tasks, setTasks] = useState(() => JSON.parse(localStorage.getItem("tasks")))
 
     useEffect(() => {
         document.title = `task : ${task}`
-        localStorage.setItem('tasks', tasks)
+        localStorage.setItem('tasks', JSON.stringify(tasks))
     })
 
 
@@ -26,7 +26,8 @@ const Todo = () => {
 
     return (
         <div className="main-div">
-            <TodoForm onSubmitForm={handleSubmitForm} task={task} setTask={setTask} />
+         
+        <TodoForm onSubmitForm={handleSubmitForm} task={task} setTask={setTask} />
             <TodoList setTasks={setTasks} tasks={tasks} />
         </div>
     )
