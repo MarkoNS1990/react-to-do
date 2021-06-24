@@ -6,6 +6,7 @@ const Todo = () => {
     const [tasks, setTasks] = useState(() => JSON.parse(localStorage.getItem("tasks")))
 
     useEffect(() => {
+        
         document.title = `task : ${task}`
         localStorage.setItem('tasks', JSON.stringify(tasks))
     })
@@ -14,8 +15,8 @@ const Todo = () => {
 
     const handleSubmitForm = (e) => {
         e.preventDefault()
-
-        task !== '' && setTasks([...tasks, { name: task, completed: false, id: Math.random() * 1000 }])
+       
+        task !== '' && setTasks([...tasks, { name: task, completed: false, id: Math.random() * 1000,created: new Date(Date.now()).toLocaleString() }])
         setTask('')
 
 
